@@ -1,0 +1,103 @@
+<!-- Main navigation -->
+<header>
+
+    <!-- Full Page Intro -->
+    <div class="view" style="background-image: url('./assets/IMG_4907.JPEG'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+        <!-- Mask & flexbox options-->
+        <div class="mask rgba-indigo-strong d-flex justify-content-center align-items-center">
+            <!-- Content -->
+            <div class="container">
+                <!--Grid row-->
+                <div class="row pt-lg-5 mt-lg-5">
+                    <!--Grid column-->
+                    <div class="col-md-6 mb-5 mt-md-0 mt-5 white-text text-center text-md-left wow fadeInLeft" data-wow-delay="0.3s">
+                        <h1 class="display-5 font-weight-bold">Looking For Services ?</h1>
+                        <hr class="hr-light" />
+                        <h6 class="mb-3">
+                            <div *ngIf="isSignedUp; else signupForm">
+                                Your registration is successful. Please login!
+                            </div>
+
+                            <div class=container>
+                                <ng-template #signupForm>
+                                    <div class="row col-sm-6" style="max-width:350px;">
+                                        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                                            <div class="form-group">
+                                                <label for="name">Your name</label>
+                                                <input type="text" class="form-control" name="name" [(ngModel)]="form.name" #name="ngModel" required />
+                                                <div *ngIf="f.submitted && name.invalid">
+                                                    <div *ngIf="name?.errors.required">Name is required</div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="username">Username</label>
+                                                <input type="text" class="form-control" name="username" [(ngModel)]="form.username" #username="ngModel" required />
+                                                <div *ngIf="f.submitted && username.invalid">
+                                                    <div *ngIf="username?.errors.required">Username is required</div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email">Email</label>
+                                                <input type="text" class="form-control" name="email" [(ngModel)]="form.email" #email="ngModel" required email />
+                                                <div *ngIf="f.submitted && email.invalid">
+                                                    <div *ngIf="email?.errors.required">Email is required</div>
+                                                    <div *ngIf="email?.errors.email">
+                                                        Email must be a valid email address
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="password">Password</label>
+                                                <input type="password" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel" required minlength="6" />
+                                                <div *ngIf="f.submitted && password.invalid">
+                                                    <div *ngIf="password?.errors.required">Password is required</div>
+                                                    <div *ngIf="password?.errors.minlength">
+                                                        Password must be at least 6 characters
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <button class="btn btn-primary">Register</button>
+                                                <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+                                                    Signup failed!<br />{{ errorMessage }}
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="role">Role</label>
+                                                <select name="role" [(ngModel)]="form.role" #role="ngModel" required select.value>
+                                        <option value="1">CLIENTE</option>
+                                        <option value="2">PROVEEDOR</option>
+                                    </select>
+                                                <input type="text" class="form-control" name="role" [(ngModel)]="form.role" #role="ngModel" required />
+                                                <div *ngIf="f.submitted && role.invalid">
+                                                    <div *ngIf="role?.errors.required">Role is required</div>
+                                                    <div *ngIf="role?.errors.role">
+                                                        Role must be: cliente o proveedor
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </ng-template>
+                            </div>
+                        </h6>
+                        <!--<a mdbBtn color="white" outline="true" mdbWavesEffect
+    >Online Reservation</a-->
+
+                    </div>
+                    <!--Grid column-->
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+            </div>
+            <!-- Content -->
+        </div>
+        <!-- Mask & flexbox options-->
+    </div>
+    <!-- Full Page Intro -->
+
+</header>
+<!-- Main navigation -->
